@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+		<title>sic-demo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+	</head>
+	<body>
+  		<section class="page-header">
+  			<h1 class="project-name">S.I.C. Demo</h1>
+  			<h2 class="project-tagline"></h2>
+  			<a href="https://acmethunder.github.io/sic-demo" class="btn">Home</a>
+<!--
+  			<a href="https://github.com/acmethunder/sic-demo/zipball/master" class="btn">Download .zip</a>
+  			<a href="https://github.com/acmethunder/sic-demo/tarball/master" class="btn">Download .tar.gz</a>
+ -->
+
+    	</section>
+    	<section class="main-content">
+    		<h3 id="content-title">UAE Citizen Demo Application</h3>
+    		<div id="identity-content">
+    			<form id="identity-values">
+    				<table>
+    					<tr>
+    						<td rowspan="6">
+    							<img id="identity-photo" src="" alt="No ID Image Available" width="100" height="100">
+    						</td>
+    						<td>
+    							<label>Document Type</label>
+    						</td>
+    						<td>
+ 				   				<input id="identity-document-type" type="text" name="document-type" placeholder="Document Type" />
+    						</td>
+    					</tr>
+    					<tr>
+							<td>
+    							<label>Document Number</label>
+    						</td>
+    						<td>
+    							<input id="identity-document-number" type="text" name="document-number" placeholder="Document Number" />
+    						</td>
+    					</tr>
+						<tr>
+							<td>
+    							<label>Given Name</label>
+    						</td>
+    						<td>
+    							<input id="identity-given-name" type="text" name="given-name" placeholder="Given Name" />
+    						</td>
+						<tr>
+							<td>
+    							<label>Middle Name</label>
+    						</td>
+    						<td>
+    							<input id="identity-middle-name" type="text" name="middle-name" placeholder="Middle Name" />
+    						</td>
+    					</tr>
+						<tr>
+							<td>
+    							<label>Family Name</label>
+    						</td>
+    						<td>
+    							<input id="identity-family-name" type="text" name="family-name" placeholder="Family Name" />
+    						</td>
+						<tr>
+							<td>
+    							<label>Nationality</label>
+    						</td>
+    						<td>
+    							<input id="identity-nationality" type="text" name="nationality" placeholder="Nationality" />
+    						</td>
+    					</tr>
+    					<tr>
+    						<td colspan="2">
+    							<img id="identity-signature" src="" alt="No Signature Provided" width="100" height="100">
+    						</td>
+    						<td>
+    							<label id="identity-sign-date"></label>
+    						</td>
+    					</tr>
+    				</table>
+    			</form>
+    		</div>
+    		<br><br>
+    		<div id="content-controls">
+    			<button id="start-session-action" class="action-control">Start Capture Session</button>
+    			<button id="card-scanner-action" class="action-control">Scan ID Card MRZ</button>
+    			<button id="passport-scanner-action" class="action-control">Scan Passport</button>
+    			<button id="signature-draw-action" class="action-control">Capture Signature</button>
+    			<button id="end-session-action" class="action-control">End Session</button>
+    		</div>
+    	</section>
+
+    	<script src="javascript/identity.js"></script>
+	</body>
+</html>
