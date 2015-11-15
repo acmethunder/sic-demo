@@ -38,7 +38,7 @@
     				<tr>
     					<td rowspan="5">
     						<div id="identity-image-container" class="sic-image-container">
-    							<img id="identity-photo" src="" alt="No ID Image Available" width="100%" height="auto">
+    							<img id="identity-photo" src="images/photo-icon.png" alt="No ID Image Available" width="100%" height="auto">
     						</div>
     					</td>
     					<td>
@@ -47,7 +47,7 @@
     					<td>
  				   			<input id="identity-document-type" type="text" name="document-type" placeholder="Document Type" />
     					</td>
-    					<td>
+    					<td rowspan="2">
     						<button id="card-scanner-action" class="action-control">Scan ID Card MRZ</button>
     					</td>
     				</tr>
@@ -58,9 +58,6 @@
     					<td>
     						<input id="identity-document-number" type="text" name="document-number" placeholder="Document Number" />
     					</td>
-    					<td rowspan=5">
-    						<button id="passport-scanner-action" class="action-control">Scan Passport</button>
-    					</td>
     				</tr>
 					<tr>
 						<td>
@@ -68,6 +65,9 @@
     					</td>
     					<td>
     						<input id="identity-given-name" type="text" name="given-name" placeholder="Given Name" />
+    					</td>
+    					<td rowspan="2">
+    						<button id="passport-scanner-action" class="action-control">Scan Passport</button>
     					</td>
 					<tr>
 						<td>
@@ -84,9 +84,12 @@
     					<td>
     						<input id="identity-family-name" type="text" name="family-name" placeholder="Family Name" />
     					</td>
+    					<td rowspan="2">
+    					<!-- Placeholder for when ID card scanner is ready -->
+    					</td>
     				</tr>
 					<tr>
-						<td>
+						<td rowspan="2">
 							<button id="identity-image-action">Take Photo</button>
 						</td>
 						<td>
@@ -98,16 +101,25 @@
     				</tr>
     				<tr>
     					<td>
+    						<label>Scan Barcode</label>
+    					</td>
+    					<td>
+    						<label id="barcode-value-label"></label>
+    					</td>
+    					<td>
+    						<button id="barcode-action">Scan Barcode</button>
+    					</td>
+    				</td>
+    				<tr>
+    					<td>
     						<div id="sign-image-container" class="sic-image-container">
-    							<img id="identity-signature" src="" alt="No Signature Provided" width="100%" height="auto">
+    							<img id="identity-signature" src="images/signature-icon.png" alt="No Signature Provided" width="100%" height="auto">
     						</div>
     					</td>
     					<td>
     						<label id="identity-sign-date"></label>
     					</td>
-    					<td>
-    					</td>
-    					<td>
+    					<td colspan="2">
     						<button id="signature-draw-action" class="action-control">Capture Signature</button>
     					</td>
     				</tr>

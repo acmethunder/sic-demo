@@ -35,6 +35,11 @@ const IdentityType = {
 	smart_card:   'smart_card'
 };
 
+const DefaultImage = {
+	DefaultCamera:    "https://acmethunder.github.io/sic-demo/images/photo-icon.png",
+	DefaultSignImage: "https://acmethunder.github.io/sic-demo/images/signature-icon.png"
+};
+
 /** Session Info */
 
 var jnbSessionId = null;
@@ -61,7 +66,8 @@ function _endSessionCallback(responseString) {
 	document.getElementById(InputIdentifiers.FamilyName).value = null;
 	document.getElementById(InputIdentifiers.Nationality).value = null;
 	document.getElementById(InputIdentifiers.IdentitySignDate).innerHTML =  null;
-	document.getElementById(InputIdentifiers.IdentitySignature).src = "";
+	document.getElementById(InputIdentifiers.IdentitySignature).src = DefaultImage.DefaultSignImage;
+	document.getElementById(InputIdentifiers.IdentityPhoto).src = DefaultImage.DefaultCamera;
 }
 
 function _parseResponseString(responseString) {
@@ -193,6 +199,18 @@ function _imageCallback(responseString) {
 			}
 
 			alert(error.error_message);
+		}
+	}
+	else {
+		var responseData = response.response_data;
+		var imageSource = ( responseData && responseData.hasOwnProperty('image') ?
+							responseData.image :
+							null );
+		if ( imageSource ) {
+			var imageElement = document.getElementById(InputIdentifiers.IdentityPhoto);
+			var tempArray = responseData.image_name.split('.');
+			var imageType = tempArray[tempArray.length - 1];
+			imageElement.src = 'data:image/' + imageType + ';base64,' + imageSource;
 		}
 	}
 }
