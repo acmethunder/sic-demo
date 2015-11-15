@@ -170,17 +170,14 @@ function _signatureCallback(responseString) {
 		var tempArray = responseData.image_name.split('.');
 		var imageType = tempArray[tempArray.length - 1];
 		imageElement.src = 'data:image/' + imageType + ';base64,' + imageSource;
-		altText = "";
 
 		var date = new Date();
 		var dateValue = "Sign Date: " + date.getDay() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
 		document.getElementById(InputIdentifiers.IdentitySignDate).innerHTML =  dateValue;
 	}
 	else {
-		altText = "Signature not available";
+		imageElement.src = DefaultImage.DefaultSignImage;
 	}
-
-	imageElement.alt = altText;
 }
 
 function _imageCallback(responseString) {
@@ -206,11 +203,16 @@ function _imageCallback(responseString) {
 		var imageSource = ( responseData && responseData.hasOwnProperty('image') ?
 							responseData.image :
 							null );
+
+		var imageElement = document.getElementById(InputIdentifiers.IdentityPhoto);
 		if ( imageSource ) {
 			var imageElement = document.getElementById(InputIdentifiers.IdentityPhoto);
 			var tempArray = responseData.image_name.split('.');
 			var imageType = tempArray[tempArray.length - 1];
 			imageElement.src = 'data:image/' + imageType + ';base64,' + imageSource;
+		}
+		else {
+			imageElement.src = DefaultImage.DefaultCamera;
 		}
 	}
 }
