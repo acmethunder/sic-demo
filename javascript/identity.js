@@ -178,6 +178,23 @@ function _signatureCallback(responseString) {
 }
 
 function _imageCallback(responseString) {
+	var response = _parseResponseString(responseString);
+	if ( ! response ) {
+		alert('Invalid image response.');
+		return;
+	}
+
+	var errorsArray = response.errors;
+	if ( errorsArray && (errorsArray.length > 0) ) {
+		for ( var i = 0; i < errorsArray.length; ++i ) {
+			var error = errorsArray[i];
+			if ( error.error_code === MRZErrorCode.UserCancelled ) {
+				break;
+			}
+
+			alert(error.error_message);
+		}
+	}
 }
 
 /** Loader */
