@@ -282,7 +282,7 @@ function _imageCallback(responseString) {
 		signatureScanClick: function() {
 			console.log('Signature Scan Click');
 
-			var imageSize = { width: 200, height: 200 };
+			var imageSize = { width: 100, height: 100 };
 			var parameters = {
 				image_size: imageSize,
 				image_format: 'jpg',
@@ -298,7 +298,7 @@ function _imageCallback(responseString) {
 		},
 
 		imageCaptureClick: function() {
-			var imageSize = { width: 200, height: 200 };
+			var imageSize = { width: 100, height: 100 };
 			var parameters = {
 				image_size: imageSize,
 				image_format: 'jpg'
