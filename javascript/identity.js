@@ -15,7 +15,8 @@ const ActionIdentifiers = {
 	PassportScanner:  'passport-scanner-action',
 	CaptureSignature: 'signature-draw-action',
 	EndSession:       'end-session-action',
-	StartSession:     'start-session-action'
+	StartSession:     'start-session-action',
+	ImageButton:      'identity-image-action'
 };
 
 const HandlerNames = {
@@ -176,6 +177,9 @@ function _signatureCallback(responseString) {
 	imageElement.alt = altText;
 }
 
+function _imageCallback(responseString) {
+}
+
 /** Loader */
 
 (function(webkitHandler){
@@ -249,10 +253,26 @@ function _signatureCallback(responseString) {
 
 			var message = {
 				callback_name: _signatureCallback.name,
-				paramters: parameters
+				parameters: parameters
 			};
 
 			var messageHandler = nativeHandler.messageHandlers[HandlerNames.signature_handler];
+			_callNative(message,messageHandler);
+		},
+
+		imageCaptureClick: function() {
+			var imageSize = { width: 200, height: 200 };
+			var parameters = {
+				image_size: imageSize,
+				image_format: 'jpg'
+			};
+
+			var message = {
+				callback_name: _imageCallback.name,
+				parameters: parameters
+			};
+
+			var messageHandler = nativeHandler.messageHandlers[HandlerNames.image_handler];
 			_callNative(message,messageHandler);
 		}
 	};
@@ -263,6 +283,7 @@ function _signatureCallback(responseString) {
 		document.getElementById(ActionIdentifiers.CardScanner).onclick = Actions.cardScanClick;
 		document.getElementById(ActionIdentifiers.PassportScanner).onclick = Actions.passportScanClick;
 		document.getElementById(ActionIdentifiers.CaptureSignature).onclick = Actions.signatureScanClick;
+		document.getElementById(ActionIdentifiers.ImageButton).onclick = Actions.imageCaptureClick;
 
 		Actions.startSessionClick();
 	};

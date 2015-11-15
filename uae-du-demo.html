@@ -36,8 +36,10 @@
     					</tr>
     				</tfoot>
     				<tr>
-    					<td rowspan="6">
-    						<img id="identity-photo" src="" alt="No ID Image Available" width="100" height="100">
+    					<td rowspan="5">
+    						<div id="identity-image-container" class="sic-image-container">
+    							<img id="identity-photo" src="" alt="No ID Image Available" width="100%" height="auto">
+    						</div>
     					</td>
     					<td>
     						<label>Document Type</label>
@@ -82,7 +84,11 @@
     					<td>
     						<input id="identity-family-name" type="text" name="family-name" placeholder="Family Name" />
     					</td>
+    				</tr>
 					<tr>
+						<td>
+							<button id="identity-image-action">Take Photo</button>
+						</td>
 						<td>
     						<label>Nationality</label>
     					</td>
@@ -92,7 +98,7 @@
     				</tr>
     				<tr>
     					<td>
-    						<div id="sign-image-container">
+    						<div id="sign-image-container" class="sic-image-container">
     							<img id="identity-signature" src="" alt="No Signature Provided" width="100%" height="auto">
     						</div>
     					</td>
