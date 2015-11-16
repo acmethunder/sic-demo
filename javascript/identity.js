@@ -219,11 +219,44 @@ function _imageCallback(responseString) {
 	}
 }
 
+/*
+{
+    errors = "<null>";
+    "original_request" =     {
+        "callback_name" = "_barcodeScanCallback";
+        "jnb_session_id" = "11D4081F-03D9-49F1-8D55-823372F71C5B";
+        parameters =         {
+            "barcode_format" =             (
+                all
+            );
+        };
+    };
+    "response_data" =     {
+        "barcode_value" = EDC96274;
+    };
+}
+*/
 function _barcodeScanCallback(responseString) {
 		var response = _parseResponseString(responseString);
 	if ( ! response ) {
 		alert('Invalid image response.');
 		return;
+	}
+
+	var errorsArray = response.errors;
+	if ( errorsArray && (errorsArray.length > 0) ) {
+		for ( var i = 0; i < errorsArray.length; ++i ) {
+			var error = errorsArray[i];
+			if ( error.error_code === MRZErrorCode.UserCancelled ) {
+				break;
+			}
+
+			alert(error.error_message);
+		}
+	}
+	else {
+		var barcodeValue = response.response_data.barcode_value;
+		document.getElementById(InputIdentifiers.BarcodeLabel).innerHTML = barcodeValue;
 	}
 }
 
@@ -324,7 +357,6 @@ function _barcodeScanCallback(responseString) {
 		},
 
 		barcodeScanClick: function() {
-
         	var message = {
         		callback_name: _barcodeScanCallback.name,
         		parameters: {
