@@ -219,23 +219,6 @@ function _imageCallback(responseString) {
 	}
 }
 
-/*
-{
-    errors = "<null>";
-    "original_request" =     {
-        "callback_name" = "_barcodeScanCallback";
-        "jnb_session_id" = "11D4081F-03D9-49F1-8D55-823372F71C5B";
-        parameters =         {
-            "barcode_format" =             (
-                all
-            );
-        };
-    };
-    "response_data" =     {
-        "barcode_value" = EDC96274;
-    };
-}
-*/
 function _barcodeScanCallback(responseString) {
 		var response = _parseResponseString(responseString);
 	if ( ! response ) {
@@ -255,7 +238,7 @@ function _barcodeScanCallback(responseString) {
 		}
 	}
 	else {
-		var barcodeValue = response.response_data.barcode_value;
+		var barcodeValue = "Barcode Value: " + response.response_data.barcode_value;
 		document.getElementById(InputIdentifiers.BarcodeLabel).innerHTML = barcodeValue;
 	}
 }
