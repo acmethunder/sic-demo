@@ -7,7 +7,8 @@ const InputIdentifiers = {
 	Nationality:       'identity-nationality',
 	IdentityPhoto:     'identity-photo',
 	IdentitySignature: 'identity-signature',
-	IdentitySignDate:  'identity-sign-date'
+	IdentitySignDate:  'identity-sign-date',
+	BarcodeLabel:      'barcode-value-label'
 };
 
 const ActionIdentifiers = {
@@ -16,7 +17,8 @@ const ActionIdentifiers = {
 	CaptureSignature: 'signature-draw-action',
 	EndSession:       'end-session-action',
 	StartSession:     'start-session-action',
-	ImageButton:      'identity-image-action'
+	ImageButton:      'identity-image-action',
+	BarcodeButton:    'barcode-action'
 };
 
 const HandlerNames = {
@@ -217,6 +219,14 @@ function _imageCallback(responseString) {
 	}
 }
 
+function _barcodeScanCallback(responseString) {
+		var response = _parseResponseString(responseString);
+	if ( ! response ) {
+		alert('Invalid image response.');
+		return;
+	}
+}
+
 /** Loader */
 
 (function(webkitHandler){
@@ -311,7 +321,20 @@ function _imageCallback(responseString) {
 
 			var messageHandler = nativeHandler.messageHandlers[HandlerNames.image_handler];
 			_callNative(message,messageHandler);
-		}
+		},
+
+		barcodeScanClick: function() {
+
+        	var message = {
+        		callback_name: _barcodeScanCallback.name,
+        		parameters: {
+        			barcode_format: [ 'all' ]
+        		}
+        	};
+
+        	var messageHandler = nativeHandler.messageHanlers[];
+        	_callNative(message,messageHandler);
+		},
 	};
 
 	function _prepDocument() {
@@ -321,6 +344,7 @@ function _imageCallback(responseString) {
 		document.getElementById(ActionIdentifiers.PassportScanner).onclick = Actions.passportScanClick;
 		document.getElementById(ActionIdentifiers.CaptureSignature).onclick = Actions.signatureScanClick;
 		document.getElementById(ActionIdentifiers.ImageButton).onclick = Actions.imageCaptureClick;
+		document.getElementById(ActionIdentifiers.BarcodeButton).onclick = Actions.barcodeScanClick;
 
 		Actions.startSessionClick();
 	};
