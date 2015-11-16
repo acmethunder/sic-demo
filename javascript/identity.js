@@ -332,7 +332,7 @@ function _barcodeScanCallback(responseString) {
         		}
         	};
 
-        	var messageHandler = nativeHandler.messageHanlers[];
+        	var messageHandler = nativeHandler.messageHanlers[HandlerNames.barcode_handler];
         	_callNative(message,messageHandler);
 		},
 	};
